@@ -1,3 +1,14 @@
+terraform {
+  backend "s3" {
+    bucket         = "devops-directive-tf-state-pre"
+    key            = "tf-infra/terraform.tfstate"
+    region         = "ap-south-1"
+    dynamodb_table = "terraform-state-locking"
+    encrypt        = true
+  }
+}
+
+
 provider "aws" {
   region = "ap-south-1" # Change region if needed
 }
@@ -9,7 +20,7 @@ data "aws_vpc" "default" {
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow HTTP traffic"
-  vpc_id      = data.aws_vpc.default.id  # Fetch default VPC
+  vpc_id      = data.aws_vpc.default.id # Fetch default VPC
 
   ingress {
     from_port   = 80
