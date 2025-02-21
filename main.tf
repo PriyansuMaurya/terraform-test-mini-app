@@ -1,10 +1,11 @@
 provider "aws" {
-  region = "us-east-1" # Change region if needed
+  region = "ap-south-1" # Change region if needed
 }
 
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow HTTP traffic"
+  vpc_id      = "vpc-0636c8e7f32dc8e14"  # Replace with your actual VPC ID
 
   ingress {
     from_port   = 80
@@ -22,7 +23,7 @@ resource "aws_security_group" "web_sg" {
 }
 
 resource "aws_instance" "web" {
-  ami             = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 (Change based on region)
+  ami             = "ami-0ddfba243cbee3768" # Amazon Linux 2 (Change based on region)
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.web_sg.name]
   key_name        = "your-key-pair" # Replace with your key pair name
