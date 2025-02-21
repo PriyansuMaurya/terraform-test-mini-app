@@ -2,6 +2,10 @@ provider "aws" {
   region = "ap-south-1" # Change region if needed
 }
 
+data "aws_vpc" "default" {
+  default = true
+}
+
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow HTTP traffic"
@@ -26,7 +30,7 @@ resource "aws_instance" "web" {
   ami             = "ami-0ddfba243cbee3768" # Amazon Linux 2 (Change based on region)
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.web_sg.name]
-  key_name        = "your-key-pair" # Replace with your key pair name
+  key_name        = "worldly" # Replace with your key pair name
 
   user_data = <<-EOF
               #!/bin/bash
