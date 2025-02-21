@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_security_group" "web_sg" {
   name        = "web-sg"
   description = "Allow HTTP traffic"
-  vpc_id      = "vpc-0636c8e7f32dc8e14"  # Replace with your actual VPC ID
+  vpc_id      = "vpc-0e981048062278fbc"  # Replace with your actual VPC ID
 
   ingress {
     from_port   = 80
