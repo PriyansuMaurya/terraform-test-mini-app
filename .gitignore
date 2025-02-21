@@ -1,0 +1,26 @@
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# AWS credentials (if any)
+*.pem
+*.key
+aws-config/
+aws-credentials
+
+# GitHub Actions cache
+.github/workflows/*.log
+.github/workflows/*.bak
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore sensitive files
+terraform.tfvars
+terraform.tfvars.json
